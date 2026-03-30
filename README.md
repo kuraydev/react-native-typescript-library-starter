@@ -1,118 +1,339 @@
-<img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/>
+# React Native TypeScript Library Starter
 
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-typescript-library-starter)
+[![CI](https://github.com/WrathChaos/react-native-typescript-library-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/WrathChaos/react-native-typescript-library-starter/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/react-native-typescript-library-starter.svg?style=flat)](https://www.npmjs.com/package/react-native-typescript-library-starter)
+[![npm downloads](https://img.shields.io/npm/dt/react-native-typescript-library-starter.svg?style=flat)](https://www.npmjs.com/package/react-native-typescript-library-starter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg)](https://reactnative.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 
-[![React Native Typescript Library Starter](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-typescript-library-starter)
+A modern, production-ready starter for building React Native TypeScript libraries. Ships with dual CJS/ESM output, full test coverage, automated releases, and AI-ready project conventions out of the box.
 
-[![npm version](https://img.shields.io/npm/v/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
-[![npm](https://img.shields.io/npm/dt/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
-![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
+---
 
-<p align="center">
-  <img alt="React Native Typescript Library Starter"
-        src="assets/Screenshots/typescript.jpg" />
-</p>
+## Features
 
-## Library Usage
+- **react-native-builder-bob** — dual CJS + ESM + TypeScript declarations
+- **Strict TypeScript** — `noImplicitAny`, `strictNullChecks`, `noUnusedLocals`
+- **Jest + @testing-library/react-native** — full test suite with coverage thresholds
+- **ESLint + Prettier** — consistent code style, enforced on commit via `lint-staged`
+- **Husky + commitlint** — conventional commit enforcement
+- **semantic-release** — automated versioning, changelog, and npm publish
+- **GitHub Actions** — CI pipeline (typecheck + lint + test + build) and release pipeline
+- **AI-Ready** — `AGENTS.md`, Cursor rules, and full TSDoc on every export
+- **Example component and hook** — reference implementations to clone from
 
-- `npm i`
-- `npm run husky:setup`
-- Delete example folder
-- Delete build folder
-- Make your own library into the `lib` folder
-- Change package.json
-- Change README for your own documentation
-- `npm run build`
+---
 
-```
-> react-native-typescript-library-starter@0.1.0 build /Users/kuray/Coursion/MyLibraries/ReactNative/react-native-typescript-library-starter
-> cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!
+## Quick Start
 
-Build completed!
-```
-
-- Test your build/dist into the new project
-- Finally, time to npm publish :)
-
-### Below part is for Documentation ! Remove above Library Usage
-
-# Installation
-
-Add the dependency:
+### 1. Clone and install
 
 ```bash
-npm i react-native-typescript-library-starter
+git clone https://github.com/WrathChaos/react-native-typescript-library-starter.git my-library
+cd my-library
+npm install
 ```
+
+### 2. Set up git hooks
+
+```bash
+npm run husky:setup
+```
+
+### 3. Configure the library
+
+Run the interactive setup wizard. It walks through every field one by one, shows a preview of all planned changes, and asks for confirmation before writing anything:
+
+```bash
+npm run setup
+```
+
+The wizard will ask for:
+- **Package name** — your npm name (e.g. `react-native-my-library`)
+- **Description** — one sentence
+- **GitHub username / org** — used to build repo URLs automatically
+- **GitHub repository name** — defaults to your package name
+- **Author name & email**
+- **License** — MIT, Apache-2.0, ISC, GPL-3.0, or Unlicensed
+- **Keywords** — optional, comma-separated extras
+
+After confirmation it updates `package.json`, `README.md`, `AGENTS.md`, and `CONTRIBUTING.md` in one go.
+
+### 4. Replace the example code
+
+The `src/` folder contains a fully-typed example component and hook. Use them as reference, then replace with your own:
+
+```
+src/
+├── components/MyComponent/   → replace with your component
+├── hooks/useMyHook.ts        → replace with your hook
+└── index.ts                  → update exports
+```
+
+### 5. Build and verify
+
+```bash
+npm run build      # outputs to lib/
+npm run typecheck  # type-check without emitting
+npm test           # run the test suite
+```
+
+---
+
+## Project Structure
+
+```
+react-native-typescript-library-starter/
+├── src/                          # ALL source code
+│   ├── index.ts                  # Public API entry point
+│   ├── components/
+│   │   └── MyComponent/
+│   │       ├── MyComponent.tsx
+│   │       ├── MyComponent.types.ts
+│   │       └── index.ts
+│   ├── hooks/
+│   │   └── useMyHook.ts
+│   ├── types/
+│   │   └── index.ts
+│   └── __tests__/
+│       ├── MyComponent.test.tsx
+│       └── useMyHook.test.ts
+├── lib/                          # Generated by bob (git-ignored)
+├── .github/workflows/
+│   ├── ci.yml                    # PR checks
+│   └── release.yml               # Publish pipeline
+├── AGENTS.md                     # AI agent instructions
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── package.json
+├── tsconfig.json
+├── tsconfig.build.json
+└── babel.config.js
+```
+
+---
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run build` | Build library to `lib/` via bob |
+| `npm run typecheck` | Type-check without emitting |
+| `npm run lint` | Run ESLint with colored output and auto-fix |
+| `npm run lint:ci` | ESLint without spinner (for CI) |
+| `npm run prettier` | Format source files |
+| `npm run prettier:ci` | Check formatting (for CI) |
+| `npm test` | Run Jest tests |
+| `npm run test:watch` | Jest in watch mode |
+| `npm run test:coverage` | Jest with coverage report |
+
+---
+
+## Build Output
+
+`react-native-builder-bob` produces three output targets inside `lib/`:
+
+| Output | Path | Used by |
+|---|---|---|
+| CommonJS | `lib/commonjs/` | Node.js, bundlers with `require()` |
+| ESM | `lib/module/` | Modern bundlers, tree-shaking |
+| TypeScript | `lib/typescript/` | Type declarations for consumers |
+
+The `package.json` `exports` field routes consumers to the correct output automatically.
+
+---
+
+## Example Component
+
+```tsx
+import { MyComponent } from "your-library";
+
+export default function App() {
+  return (
+    <MyComponent
+      title="Hello World"
+      description="A fully-typed example component."
+      enableButton
+      buttonText="Tap me"
+      onPress={() => console.log("pressed")}
+    />
+  );
+}
+```
+
+### MyComponent Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | — | Primary title text (required) |
+| `description` | `string` | — | Optional description below title |
+| `enableButton` | `boolean` | `false` | Renders an action button |
+| `buttonText` | `string` | `"Press me"` | Button label |
+| `onPress` | `() => void` | — | Button press callback |
+| `style` | `StyleProp<ViewStyle>` | — | Root container style override |
+| `titleStyle` | `StyleProp<TextStyle>` | — | Title text style override |
+| `descriptionStyle` | `StyleProp<TextStyle>` | — | Description text style override |
+| `buttonStyle` | `StyleProp<ViewStyle>` | — | Button container style override |
+| `buttonTextStyle` | `StyleProp<TextStyle>` | — | Button label style override |
+| `accessibilityLabel` | `string` | `title` | Accessibility label for the container |
+| `testID` | `string` | `"my-component"` | Test ID for querying in tests |
+
+---
+
+## Example Hook
+
+```tsx
+import { useMyHook } from "your-library";
+
+function Counter() {
+  const { count, increment, decrement, reset, isAtMax, isAtMin } = useMyHook({
+    initialValue: 0,
+    max: 10,
+    min: 0,
+    step: 1,
+  });
+
+  return (
+    <View>
+      <Text>{count}</Text>
+      <Button title="+" onPress={increment} disabled={isAtMax} />
+      <Button title="-" onPress={decrement} disabled={isAtMin} />
+      <Button title="Reset" onPress={reset} />
+    </View>
+  );
+}
+```
+
+### useMyHook Options
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `initialValue` | `number` | `0` | Starting counter value |
+| `max` | `number` | — | Upper bound (no limit if omitted) |
+| `min` | `number` | `0` | Lower bound |
+| `step` | `number` | `1` | Increment/decrement amount |
+
+### useMyHook Return
+
+| Key | Type | Description |
+|---|---|---|
+| `count` | `number` | Current counter value |
+| `increment` | `() => void` | Increment by `step` |
+| `decrement` | `() => void` | Decrement by `step` |
+| `reset` | `() => void` | Reset to `initialValue` |
+| `isAtMax` | `boolean` | `true` when `count >= max` |
+| `isAtMin` | `boolean` | `true` when `count <= min` |
+
+---
+
+## Testing
+
+Tests use [Jest](https://jestjs.io/) and [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/).
+
+```bash
+npm test                 # run all tests
+npm run test:coverage    # with coverage report
+```
+
+Coverage thresholds are enforced in `package.json`:
+- Branches: 70%
+- Functions / Lines / Statements: 80%
+
+---
+
+## Commit Conventions
+
+This project enforces [Conventional Commits](https://www.conventionalcommits.org/) via `commitlint`:
+
+```
+feat: add MyButton component
+fix: correct accessibility role
+test: add boundary cases for useMyHook
+docs: update README with new props
+chore: upgrade dependencies
+```
+
+Commits trigger automatic versioning via semantic-release:
+- `fix` → patch release
+- `feat` → minor release
+- `feat` with `BREAKING CHANGE` footer → major release
+
+---
+
+## CI / CD
+
+### CI Pipeline (`.github/workflows/ci.yml`)
+
+Runs on every push and pull request to `main`:
+
+1. **Typecheck** — `tsc --noEmit`
+2. **Lint** — ESLint + Prettier check
+3. **Test** — Jest with coverage
+4. **Build** — `bob build` (only runs after all checks pass)
+
+### Release Pipeline (`.github/workflows/release.yml`)
+
+Runs on push to `main` after CI passes:
+
+1. Run full test suite
+2. Build library
+3. `semantic-release` → bump version, update `CHANGELOG.md`, publish to npm, create GitHub release
+
+**Required secrets:** `NPM_TOKEN` (in your GitHub repo settings).
+
+---
+
+## AI / LLM Usage
+
+This starter is designed to be AI-friendly:
+
+- **`AGENTS.md`** — read this file first when working with an AI agent. It contains the full directory map, all runnable commands, conventions, naming rules, and do/don'ts.
+- **`.cursor/rules/library-conventions.mdc`** — Cursor AI rules that automatically enforce component/hook patterns.
+- **TSDoc everywhere** — every exported function, component, prop, and type has `@param`, `@returns`, and `@example` documentation. This maximises AI autocomplete quality.
+- **Strict TypeScript** — strict mode produces accurate types that AI tools can reason about reliably.
+- **Conventional Commits** — predictable commit history helps AI tools summarize changes and generate release notes.
+
+### Using with Cursor
+
+The `.cursor/rules/library-conventions.mdc` rule is auto-applied to all `src/**/*.ts` and `src/**/*.tsx` files. It enforces component structure, hook patterns, and TSDoc requirements.
+
+### Using with Claude / ChatGPT
+
+Paste the contents of `AGENTS.md` into the system prompt or the start of a conversation for best results.
+
+---
 
 ## Peer Dependencies
 
-<h5><i>IMPORTANT! You need install them</i></h5>
-
-```js
-"react": ">= 16.x.x",
-"react-native": ">= 0.55.x",
+```json
+"peerDependencies": {
+  "react": ">=17.0.0",
+  "react-native": ">=0.70.0"
+}
 ```
 
-# Usage
+---
 
-## Import
+## Contributing
 
-```jsx
-import MyComponent from "react-native-typescript-library-starter";
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
-## Fundamental Usage
+---
 
-```jsx
-<MyComponent />
-```
+## Changelog
 
-## Example Project 😍
+See [CHANGELOG.md](CHANGELOG.md).
 
-You can checkout the example project 🥰
-
-Simply run
-
-- `npm i`
-- `react-native run-ios/android`
-
-should work of the example project.
-
-# Configuration - Props
-
-## Fundamentals
-
-| Property    |  Type  |  Default  | Description           |
-| ----------- | :----: | :-------: | --------------------- |
-| title       | string | undefined | change the title      |
-| description | string | undefined | change the descrition |
-
-## Customization (Optionals)
-
-| Property       |   Type    |  Default  | Description                                                            |
-| -------------- | :-------: | :-------: | ---------------------------------------------------------------------- |
-| enableButton   |  boolean  |   false   | let you enable the button (must use it for button)                     |
-| onPress        | function  | undefined | set your own logic for the button functionality when it is pressed     |
-| buttonText     |  string   | undefined | change the button's text                                               |
-| style          | ViewStyle |  default  | set or override the style object for the main container                |
-| buttonStyle    | ViewStyle |  default  | set or override the style object for the button style                  |
-| ImageComponent |   Image   |  default  | set your own component instead of default react-native Image component |
-
-## Future Plans
-
-- [x] ~~LICENSE~~
-- [ ] Write an article about the lib on Medium
-
-# Change Log
-
-Change log will be here !
-
-## Author
-
-FreakyCoder, kurayogun@gmail.com
+---
 
 ## License
 
-React Native Typescript Library Starter is available under the MIT license. See the LICENSE file for more info.
+MIT — see [LICENSE](LICENSE).
+
+---
+
+## Author
+
+**FreakyCoder** — [kurayogun@gmail.com](mailto:kurayogun@gmail.com)  
+[freakycoder.com](https://www.freakycoder.com)

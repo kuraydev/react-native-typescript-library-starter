@@ -1,0 +1,168 @@
+---
+description: React Native library conventions for this starter. Apply when creating or editing components, hooks, types, or tests in src/.
+globs: ["src/**/*.ts", "src/**/*.tsx"]
+alwaysApply: true
+---
+
+# Library Conventions
+
+## Component Structure
+
+Every component lives in its own folder under `src/components/`:
+
+```
+src/components/MyComponent/
+├── MyComponent.tsx          # Implementation
+├── MyComponent.types.ts     # Props interface
+└── index.ts                 # Barrel: re-exports default + named + types
+```
+
+### Props Interface Pattern
+
+```tsx
+// MyComponent.types.ts
+import type { StyleProp, ViewStyle } from "react-native";
+
+/**
+ * Props for the {@link MyComponent} component.
+ */
+export interface MyComponentProps {
+  /** Required title — always document every prop with TSDoc. */
+  title: string;
+
+  /** Optional. Always mark optional props with `?`. */
+  style?: StyleProp<ViewStyle>;
+
+  /** @defaultValue false */
+  enabled?: boolean;
+}
+```
+
+### Component Implementation Pattern
+
+```tsx
+// MyComponent.tsx
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import type { MyComponentProps } from "./MyComponent.types";
+
+/**
+ * TSDoc summary line.
+ *
+ * @example
+ * ```tsx
+ * <MyComponent title="Hello" />
+ * ```
+ */
+const MyComponent: React.FC<MyComponentProps> = ({
+  title,
+  style,
+  enabled = false,
+  testID = "my-component",
+}) => {
+  return (
+    <View style={[styles.container, style]} testID={testID}>
+      {/* implementation */}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
+export default MyComponent;
+```
+
+### Barrel Pattern
+
+```ts
+// index.ts
+export { default } from "./MyComponent";
+export { default as MyComponent } from "./MyComponent";
+export type { MyComponentProps } from "./MyComponent.types";
+```
+
+## Hook Pattern
+
+```ts
+// src/hooks/useMyHook.ts
+export interface UseMyHookOptions {
+  /** TSDoc every option. */
+  initialValue?: number;
+}
+
+export interface UseMyHookReturn {
+  /** TSDoc every returned value. */
+  value: number;
+  setValue: (v: number) => void;
+}
+
+/**
+ * @example
+ * const { value, setValue } = useMyHook({ initialValue: 0 });
+ */
+export function useMyHook(options: UseMyHookOptions = {}): UseMyHookReturn {
+  // implementation
+}
+```
+
+- Named export only (no default export for hooks).
+- Export `Options` and `Return` interfaces.
+
+## Public API (`src/index.ts`)
+
+- Export every public value AND its types.
+- Never export internal helpers.
+
+```ts
+export { MyComponent } from "./components/MyComponent";
+export type { MyComponentProps } from "./components/MyComponent";
+export { useMyHook } from "./hooks/useMyHook";
+export type { UseMyHookOptions, UseMyHookReturn } from "./hooks/useMyHook";
+```
+
+## TypeScript Rules
+
+- `import type` for type-only imports.
+- No `any` — use `unknown` or proper generics.
+- No `ts-ignore` without an explanatory comment.
+- Props defaults should be destructured with `= value` syntax.
+
+## Styling Rules
+
+- Always use `StyleSheet.create()`.
+- No inline style objects (`style={{ margin: 8 }}` in JSX is off for production code).
+- Style overrides accepted as `StyleProp<ViewStyle | TextStyle | ImageStyle>`.
+
+## testID Convention
+
+- Accept `testID?: string` with a sensible default (e.g. `"my-component"`).
+- Derive child testIDs: `${testID}-title`, `${testID}-button`, etc.
+
+## Testing Rules
+
+- Tests live in `src/__tests__/` or `src/components/MyComponent/__tests__/`.
+- Use `@testing-library/react-native`.
+- Group with `describe` blocks: `rendering`, `interactions`, `accessibility`.
+- Hook tests use `renderHook` + `act`.
+- Never use `snapshot` tests for this library.
+
+## File Naming
+
+| Type | Convention | Example |
+|---|---|---|
+| Component | PascalCase | `MyButton.tsx` |
+| Component types | PascalCase + `.types` | `MyButton.types.ts` |
+| Hook | camelCase with `use` prefix | `useDebounce.ts` |
+| Test | same name + `.test` | `MyButton.test.tsx` |
+| Type utilities | camelCase | `index.ts` |
+
+## Commit Messages (Conventional Commits)
+
+```
+feat: add MyButton component
+fix: correct accessibility role on MyComponent
+test: add useMyHook boundary tests
+docs: add TSDoc examples to MyComponent props
+```

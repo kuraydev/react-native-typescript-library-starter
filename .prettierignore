@@ -1,9 +1,6 @@
 node_modules/**
-vendor/**
-build/**
-example/vendor/**
-example/build/**
-example/dist/**
+lib/**
+coverage/**
 *.min.js
 *.bundle.js
 *.snap
@@ -11,11 +8,3 @@ example/dist/**
 *.lock
 *.map
 *.d.ts
-*.test.js
-*.test.jsx
-*.test.ts
-*.test.tsx
-*.spec.js
-*.spec.jsx
-*.spec.ts
-*.spec.tsx

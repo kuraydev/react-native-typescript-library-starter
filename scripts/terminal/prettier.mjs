@@ -1,16 +1,21 @@
-import { exec } from 'child_process';
-import chalk from 'chalk';
-import ora from 'ora';
+import { exec } from "child_process";
+import chalk from "chalk";
+import ora from "ora";
 
-const spinner = ora(chalk.cyan('Formatting code...')).start();
-spinner.color = 'cyan';
+const spinner = ora(chalk.cyan("Formatting code...")).start();
+spinner.color = "cyan";
 
-// Adjust the Prettier command and glob pattern to match your project.
-exec('npx prettier --write "lib/**/*.{js,ts,tsx}"', (error, stdout, stderr) => {
-  if (error) {
-    spinner.fail(chalk.bgRed(`Prettier error: ${stderr}`));
-    process.exit(1);
-  } else {
-    spinner.succeed(chalk.cyanBright('Code formatted successfully!'));
-  }
-});
+exec(
+  'npx prettier --write "src/**/*.{ts,tsx}"',
+  (error, stdout, stderr) => {
+    process.stdout.write("\r\x1b[K");
+
+    if (error) {
+      spinner.fail(chalk.bgRed(`Prettier error:\n${stderr}`));
+      process.exit(1);
+    } else {
+      if (stdout) process.stdout.write(stdout);
+      spinner.succeed(chalk.cyanBright("Code formatted successfully!"));
+    }
+  },
+);

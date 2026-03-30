@@ -1,39 +1,32 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es6",
-    "lib": ["es6"],
-    "allowJs": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020"],
+    "allowJs": false,
     "jsx": "react-native",
-    "noImplicitAny": false,
-    "incremental": true /* Enable incremental compilation */,
-    "isolatedModules": true,
     "strict": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "outDir": "build/dist",
-    "noEmitHelpers": true,
-    "alwaysStrict": true,
-    "strictFunctionTypes": true,
-    "resolveJsonModule": true,
-    "importHelpers": false,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
-    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
     "strictNullChecks": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "bundler",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./@types"],
-    "declaration": true /* Generates corresponding '.d.ts' file. */,
-    "sourceMap": true /* Generates corresponding '.map' file. */
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./node_modules/@types", "./@types"]
   },
-  "exclude": [
-    "example",
-    "example-manual-state",
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "lib", "build"]
 }

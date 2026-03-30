@@ -1,29 +1,45 @@
-name: Release npm package
+name: Release
 
 on:
-  pull_request:
+  push:
     branches:
+      - main
       - master
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
+          cache: "npm"
+
       - name: Install dependencies
-        run: npm install
-      - name: Install CI dependencies
         run: npm ci
-      - name: Build Library
-        run: npm run build --if-present
-      - name: Test Library if possible
-        run: npm test --if-present
+
+      - name: Run typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm run test:coverage
+
+      - name: Build library
+        run: npm run build
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
