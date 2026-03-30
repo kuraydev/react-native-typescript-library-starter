@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
 
-A modern, production-ready starter for building React Native TypeScript libraries. Ships with dual CJS/ESM output, full test coverage, automated releases, and AI-ready project conventions out of the box.
+A modern, production-ready starter for building React Native TypeScript libraries. Ships with dual CJS/ESM output, full test coverage, and AI-ready project conventions out of the box.
 
 ---
 
@@ -27,8 +27,7 @@ See the full [CHANGELOG](CHANGELOG.md) for all changes including the 2.0.0 redes
 - **Jest + @testing-library/react-native** — full test suite with coverage thresholds
 - **ESLint + Prettier** — consistent code style, enforced on commit via `lint-staged`
 - **Husky v9 + commitlint** — conventional commit enforcement, hooks install on `npm install`
-- **semantic-release** — automated versioning, changelog, and npm publish
-- **GitHub Actions** — CI pipeline (typecheck + lint + test + build) and release pipeline
+- **GitHub Actions** — CI pipeline (typecheck + lint + test + build)
 - **AI-Ready** — `AGENTS.md`, Cursor rules, and full TSDoc on every export
 - **Interactive setup wizard** — `npm run setup` to configure your library in 60 seconds
 - **Example component and hook** — reference implementations to clone from
@@ -264,15 +263,9 @@ docs: update README with new props
 chore: upgrade dependencies
 ```
 
-Commits trigger automatic versioning via semantic-release:
-
-- `fix` → patch release
-- `feat` → minor release
-- `feat` with `BREAKING CHANGE` footer → major release
-
 ---
 
-## CI / CD
+## CI
 
 ### CI Pipeline (`.github/workflows/ci.yml`)
 
@@ -282,16 +275,6 @@ Runs on every push and pull request to `main`:
 2. **Lint** — ESLint + Prettier check
 3. **Test** — Jest with coverage
 4. **Build** — `bob build` (only runs after all checks pass)
-
-### Release Pipeline (`.github/workflows/release.yml`)
-
-Runs on push to `main` after CI passes:
-
-1. Run full test suite
-2. Build library
-3. `semantic-release` → bump version, update `CHANGELOG.md`, publish to npm, create GitHub release
-
-**Required secrets:** `NPM_TOKEN` (in your GitHub repo settings).
 
 ---
 

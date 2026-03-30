@@ -12,7 +12,7 @@ This file provides context for AI agents (Cursor, Claude, Copilot, etc.) working
 - Testing: Jest + `@testing-library/react-native`
 - Language: TypeScript (strict mode, no `any`)
 - Linting: ESLint v8 + Prettier
-- Release: semantic-release (conventional commits → CHANGELOG + npm publish)
+- CI: GitHub Actions (typecheck + lint + test + build)
 
 ---
 
@@ -57,7 +57,6 @@ react-native-typescript-library-starter/
 ├── babel.config.js               # metro-react-native-babel-preset (for Jest)
 ├── .eslintrc.js
 ├── .prettierrc
-├── .releaserc.json               # semantic-release config
 └── .commitlintrc.json
 ```
 
@@ -67,20 +66,19 @@ react-native-typescript-library-starter/
 
 All commands should be run from the repository root.
 
-| Command                    | Description                                                |
-| -------------------------- | ---------------------------------------------------------- |
-| `npm run setup`            | Interactive wizard — configure name, author, repo URLs     |
-| `npm install`              | Install all dependencies (also runs `husky` via `prepare`) |
-| `npm run build`            | Build library to `lib/` via bob                            |
-| `npm run typecheck`        | Type-check without emitting files                          |
-| `npm run lint`             | Run ESLint with colored output                             |
-| `npm run lint:ci`          | Run ESLint without spinner (for CI)                        |
-| `npm run prettier`         | Format code with colored output                            |
-| `npm run prettier:ci`      | Check formatting without spinner (for CI)                  |
-| `npm test`                 | Run Jest tests                                             |
-| `npm run test:watch`       | Run Jest in watch mode                                     |
-| `npm run test:coverage`    | Run Jest with coverage report                              |
-| `npm run semantic-release` | Manually trigger a release (usually done by CI)            |
+| Command                 | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| `npm run setup`         | Interactive wizard — configure name, author, repo URLs     |
+| `npm install`           | Install all dependencies (also runs `husky` via `prepare`) |
+| `npm run build`         | Build library to `lib/` via bob                            |
+| `npm run typecheck`     | Type-check without emitting files                          |
+| `npm run lint`          | Run ESLint with colored output                             |
+| `npm run lint:ci`       | Run ESLint without spinner (for CI)                        |
+| `npm run prettier`      | Format code with colored output                            |
+| `npm run prettier:ci`   | Check formatting without spinner (for CI)                  |
+| `npm test`              | Run Jest tests                                             |
+| `npm run test:watch`    | Run Jest in watch mode                                     |
+| `npm run test:coverage` | Run Jest with coverage report                              |
 
 ---
 

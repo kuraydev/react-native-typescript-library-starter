@@ -115,18 +115,6 @@ The commit message header is limited to **150 characters**.
 
 ---
 
-## Versioning
-
-Versioning is handled automatically by [semantic-release](https://github.com/semantic-release/semantic-release) based on commit messages. You do not need to manually bump versions.
-
-| Commit type                          | Version bump  |
-| ------------------------------------ | ------------- |
-| `fix`                                | Patch (0.0.x) |
-| `feat`                               | Minor (0.x.0) |
-| `feat` with `BREAKING CHANGE` footer | Major (x.0.0) |
-
----
-
 ## License
 
 By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
