@@ -19,13 +19,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/WrathChaos/react-native-typescript-library-starter.git"
+    "url": "https://github.com/kuraydev/react-native-typescript-library-starter.git"
   },
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/WrathChaos/react-native-typescript-library-starter#readme",
+  "homepage": "https://github.com/kuraydev/react-native-typescript-library-starter#readme",
   "bugs": {
-    "url": "https://github.com/WrathChaos/react-native-typescript-library-starter/issues"
+    "url": "https://github.com/kuraydev/react-native-typescript-library-starter/issues"
   },
   "keywords": [
     "react-native",
