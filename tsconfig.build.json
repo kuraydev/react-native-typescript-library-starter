@@ -4,6 +4,7 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "rootDir": ".",
     "outDir": "lib/typescript",
     "noUnusedLocals": false,
     "noUnusedParameters": false
