@@ -37,9 +37,7 @@ npm install
 
 ### 2. Set up git hooks
 
-```bash
-npm run husky:setup
-```
+Git hooks are installed automatically when you run `npm install` (via the `prepare` script). No extra step needed.
 
 ### 3. Configure the library
 
@@ -50,6 +48,7 @@ npm run setup
 ```
 
 The wizard will ask for:
+
 - **Package name** — your npm name (e.g. `react-native-my-library`)
 - **Description** — one sentence
 - **GitHub username / org** — used to build repo URLs automatically
@@ -116,17 +115,17 @@ react-native-typescript-library-starter/
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run build` | Build library to `lib/` via bob |
-| `npm run typecheck` | Type-check without emitting |
-| `npm run lint` | Run ESLint with colored output and auto-fix |
-| `npm run lint:ci` | ESLint without spinner (for CI) |
-| `npm run prettier` | Format source files |
-| `npm run prettier:ci` | Check formatting (for CI) |
-| `npm test` | Run Jest tests |
-| `npm run test:watch` | Jest in watch mode |
-| `npm run test:coverage` | Jest with coverage report |
+| Command                 | Description                                 |
+| ----------------------- | ------------------------------------------- |
+| `npm run build`         | Build library to `lib/` via bob             |
+| `npm run typecheck`     | Type-check without emitting                 |
+| `npm run lint`          | Run ESLint with colored output and auto-fix |
+| `npm run lint:ci`       | ESLint without spinner (for CI)             |
+| `npm run prettier`      | Format source files                         |
+| `npm run prettier:ci`   | Check formatting (for CI)                   |
+| `npm test`              | Run Jest tests                              |
+| `npm run test:watch`    | Jest in watch mode                          |
+| `npm run test:coverage` | Jest with coverage report                   |
 
 ---
 
@@ -134,11 +133,11 @@ react-native-typescript-library-starter/
 
 `react-native-builder-bob` produces three output targets inside `lib/`:
 
-| Output | Path | Used by |
-|---|---|---|
-| CommonJS | `lib/commonjs/` | Node.js, bundlers with `require()` |
-| ESM | `lib/module/` | Modern bundlers, tree-shaking |
-| TypeScript | `lib/typescript/` | Type declarations for consumers |
+| Output     | Path              | Used by                            |
+| ---------- | ----------------- | ---------------------------------- |
+| CommonJS   | `lib/commonjs/`   | Node.js, bundlers with `require()` |
+| ESM        | `lib/module/`     | Modern bundlers, tree-shaking      |
+| TypeScript | `lib/typescript/` | Type declarations for consumers    |
 
 The `package.json` `exports` field routes consumers to the correct output automatically.
 
@@ -164,20 +163,20 @@ export default function App() {
 
 ### MyComponent Props
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `title` | `string` | — | Primary title text (required) |
-| `description` | `string` | — | Optional description below title |
-| `enableButton` | `boolean` | `false` | Renders an action button |
-| `buttonText` | `string` | `"Press me"` | Button label |
-| `onPress` | `() => void` | — | Button press callback |
-| `style` | `StyleProp<ViewStyle>` | — | Root container style override |
-| `titleStyle` | `StyleProp<TextStyle>` | — | Title text style override |
-| `descriptionStyle` | `StyleProp<TextStyle>` | — | Description text style override |
-| `buttonStyle` | `StyleProp<ViewStyle>` | — | Button container style override |
-| `buttonTextStyle` | `StyleProp<TextStyle>` | — | Button label style override |
-| `accessibilityLabel` | `string` | `title` | Accessibility label for the container |
-| `testID` | `string` | `"my-component"` | Test ID for querying in tests |
+| Prop                 | Type                   | Default          | Description                           |
+| -------------------- | ---------------------- | ---------------- | ------------------------------------- |
+| `title`              | `string`               | —                | Primary title text (required)         |
+| `description`        | `string`               | —                | Optional description below title      |
+| `enableButton`       | `boolean`              | `false`          | Renders an action button              |
+| `buttonText`         | `string`               | `"Press me"`     | Button label                          |
+| `onPress`            | `() => void`           | —                | Button press callback                 |
+| `style`              | `StyleProp<ViewStyle>` | —                | Root container style override         |
+| `titleStyle`         | `StyleProp<TextStyle>` | —                | Title text style override             |
+| `descriptionStyle`   | `StyleProp<TextStyle>` | —                | Description text style override       |
+| `buttonStyle`        | `StyleProp<ViewStyle>` | —                | Button container style override       |
+| `buttonTextStyle`    | `StyleProp<TextStyle>` | —                | Button label style override           |
+| `accessibilityLabel` | `string`               | `title`          | Accessibility label for the container |
+| `testID`             | `string`               | `"my-component"` | Test ID for querying in tests         |
 
 ---
 
@@ -207,23 +206,23 @@ function Counter() {
 
 ### useMyHook Options
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `initialValue` | `number` | `0` | Starting counter value |
-| `max` | `number` | — | Upper bound (no limit if omitted) |
-| `min` | `number` | `0` | Lower bound |
-| `step` | `number` | `1` | Increment/decrement amount |
+| Option         | Type     | Default | Description                       |
+| -------------- | -------- | ------- | --------------------------------- |
+| `initialValue` | `number` | `0`     | Starting counter value            |
+| `max`          | `number` | —       | Upper bound (no limit if omitted) |
+| `min`          | `number` | `0`     | Lower bound                       |
+| `step`         | `number` | `1`     | Increment/decrement amount        |
 
 ### useMyHook Return
 
-| Key | Type | Description |
-|---|---|---|
-| `count` | `number` | Current counter value |
-| `increment` | `() => void` | Increment by `step` |
-| `decrement` | `() => void` | Decrement by `step` |
-| `reset` | `() => void` | Reset to `initialValue` |
-| `isAtMax` | `boolean` | `true` when `count >= max` |
-| `isAtMin` | `boolean` | `true` when `count <= min` |
+| Key         | Type         | Description                |
+| ----------- | ------------ | -------------------------- |
+| `count`     | `number`     | Current counter value      |
+| `increment` | `() => void` | Increment by `step`        |
+| `decrement` | `() => void` | Decrement by `step`        |
+| `reset`     | `() => void` | Reset to `initialValue`    |
+| `isAtMax`   | `boolean`    | `true` when `count >= max` |
+| `isAtMin`   | `boolean`    | `true` when `count <= min` |
 
 ---
 
@@ -237,6 +236,7 @@ npm run test:coverage    # with coverage report
 ```
 
 Coverage thresholds are enforced in `package.json`:
+
 - Branches: 70%
 - Functions / Lines / Statements: 80%
 
@@ -255,6 +255,7 @@ chore: upgrade dependencies
 ```
 
 Commits trigger automatic versioning via semantic-release:
+
 - `fix` → patch release
 - `feat` → minor release
 - `feat` with `BREAKING CHANGE` footer → major release

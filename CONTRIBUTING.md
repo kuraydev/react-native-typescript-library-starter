@@ -14,7 +14,7 @@ cd react-native-typescript-library-starter
 # 2. Install dependencies
 npm install
 
-# 3. Set up git hooks
+# 3. Set up git hooks (runs automatically via the prepare script above)
 npm run husky:setup
 ```
 
@@ -22,15 +22,15 @@ npm run husky:setup
 
 ## Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run build` | Build library to `lib/` |
-| `npm run typecheck` | Type-check without emitting |
-| `npm run lint` | Run ESLint with fix |
-| `npm run prettier` | Format code |
-| `npm test` | Run all tests |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:coverage` | Run tests with coverage |
+| Script                  | Description                 |
+| ----------------------- | --------------------------- |
+| `npm run build`         | Build library to `lib/`     |
+| `npm run typecheck`     | Type-check without emitting |
+| `npm run lint`          | Run ESLint with fix         |
+| `npm run prettier`      | Format code                 |
+| `npm test`              | Run all tests               |
+| `npm run test:watch`    | Run tests in watch mode     |
+| `npm run test:coverage` | Run tests with coverage     |
 
 ---
 
@@ -50,18 +50,18 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/). 
 
 ### Allowed types
 
-| Type | When to use |
-|---|---|
-| `feat` | A new feature |
-| `fix` | A bug fix |
-| `perf` | A performance improvement |
+| Type       | When to use                                         |
+| ---------- | --------------------------------------------------- |
+| `feat`     | A new feature                                       |
+| `fix`      | A bug fix                                           |
+| `perf`     | A performance improvement                           |
 | `refactor` | Code change that is neither a bug fix nor a feature |
-| `style` | Formatting, whitespace, missing semicolons |
-| `test` | Adding or fixing tests |
-| `docs` | Documentation changes |
-| `ci` | CI/CD configuration changes |
-| `chore` | Build process or tooling changes |
-| `revert` | Reverts a previous commit |
+| `style`    | Formatting, whitespace, missing semicolons          |
+| `test`     | Adding or fixing tests                              |
+| `docs`     | Documentation changes                               |
+| `ci`       | CI/CD configuration changes                         |
+| `chore`    | Build process or tooling changes                    |
+| `revert`   | Reverts a previous commit                           |
 
 ### Examples
 
@@ -119,10 +119,10 @@ The commit message header is limited to **150 characters**.
 
 Versioning is handled automatically by [semantic-release](https://github.com/semantic-release/semantic-release) based on commit messages. You do not need to manually bump versions.
 
-| Commit type | Version bump |
-|---|---|
-| `fix` | Patch (0.0.x) |
-| `feat` | Minor (0.x.0) |
+| Commit type                          | Version bump  |
+| ------------------------------------ | ------------- |
+| `fix`                                | Patch (0.0.x) |
+| `feat`                               | Minor (0.x.0) |
 | `feat` with `BREAKING CHANGE` footer | Major (x.0.0) |
 
 ---

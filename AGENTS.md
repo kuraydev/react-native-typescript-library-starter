@@ -67,32 +67,34 @@ react-native-typescript-library-starter/
 
 All commands should be run from the repository root.
 
-| Command | Description |
-|---|---|
-| `npm run setup` | Interactive wizard — configure name, author, repo URLs |
-| `npm install` | Install all dependencies |
-| `npm run build` | Build library to `lib/` via bob |
-| `npm run typecheck` | Type-check without emitting files |
-| `npm run lint` | Run ESLint with colored output |
-| `npm run lint:ci` | Run ESLint without spinner (for CI) |
-| `npm run prettier` | Format code with colored output |
-| `npm run prettier:ci` | Check formatting without spinner (for CI) |
-| `npm test` | Run Jest tests |
-| `npm run test:watch` | Run Jest in watch mode |
-| `npm run test:coverage` | Run Jest with coverage report |
-| `npm run semantic-release` | Manually trigger a release (usually done by CI) |
+| Command                    | Description                                                |
+| -------------------------- | ---------------------------------------------------------- |
+| `npm run setup`            | Interactive wizard — configure name, author, repo URLs     |
+| `npm install`              | Install all dependencies (also runs `husky` via `prepare`) |
+| `npm run build`            | Build library to `lib/` via bob                            |
+| `npm run typecheck`        | Type-check without emitting files                          |
+| `npm run lint`             | Run ESLint with colored output                             |
+| `npm run lint:ci`          | Run ESLint without spinner (for CI)                        |
+| `npm run prettier`         | Format code with colored output                            |
+| `npm run prettier:ci`      | Check formatting without spinner (for CI)                  |
+| `npm test`                 | Run Jest tests                                             |
+| `npm run test:watch`       | Run Jest in watch mode                                     |
+| `npm run test:coverage`    | Run Jest with coverage report                              |
+| `npm run semantic-release` | Manually trigger a release (usually done by CI)            |
 
 ---
 
 ## Conventions
 
 ### TypeScript
+
 - Strict mode is enabled (`"strict": true`). No `any`, no `ts-ignore` without a comment explaining why.
 - Use `type` for type aliases and `interface` for object shapes.
 - Always use `import type` for type-only imports.
 - Path alias `@/*` maps to `src/*`.
 
 ### Components
+
 - One component per folder under `src/components/`.
 - File naming: `MyComponent.tsx` (implementation), `MyComponent.types.ts` (props), `index.ts` (barrel).
 - Props interface must be named `<ComponentName>Props` and exported from the barrel.
@@ -101,6 +103,7 @@ All commands should be run from the repository root.
 - Forward `testID` and derive child testIDs as `${testID}-<part>`.
 
 ### Hooks
+
 - One hook per file under `src/hooks/`.
 - Export the hook as a named export (not default).
 - Export the options interface as `Use<HookName>Options`.
@@ -108,14 +111,17 @@ All commands should be run from the repository root.
 - All hooks must have full TSDoc with `@param`, `@returns`, and `@example`.
 
 ### Public API
+
 - Only add exports to `src/index.ts` — this is the package entry point.
 - Export both the value and its types from `src/index.ts`.
 - Never import from `lib/` — always from `src/`.
 
 ### Commits
+
 Follow Conventional Commits. Allowed types: `feat`, `fix`, `perf`, `refactor`, `style`, `test`, `docs`, `ci`, `chore`, `revert`.
 
 Examples:
+
 ```
 feat: add PressableCard component
 fix: correct button accessibility role
@@ -124,6 +130,7 @@ docs: update README with new API
 ```
 
 ### Testing
+
 - Test files live in `src/__tests__/`.
 - File names match the source: `MyComponent.test.tsx`, `useMyHook.test.ts`.
 - Use `@testing-library/react-native` for component tests (`render`, `fireEvent`, `getByTestId`).

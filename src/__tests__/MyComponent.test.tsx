@@ -45,9 +45,7 @@ describe("MyComponent", () => {
     });
 
     it("uses default button text when buttonText is omitted", () => {
-      const { getByText } = render(
-        <MyComponent title="Hello" enableButton />,
-      );
+      const { getByText } = render(<MyComponent title="Hello" enableButton />);
       expect(getByText("Press me")).toBeTruthy();
     });
   });

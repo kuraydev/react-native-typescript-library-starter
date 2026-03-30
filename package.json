@@ -42,7 +42,7 @@
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "build": "bob build",
-    "prepare": "husky install",
+    "prepare": "husky",
     "typecheck": "tsc --noEmit",
     "lint": "node scripts/terminal/lint.mjs",
     "lint:ci": "eslint \"src/**/*.{ts,tsx}\"",
@@ -52,9 +52,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "semantic-release": "semantic-release",
-    "husky:setup": "npx husky-init && npm run husky:commitlint && npm run husky:lint",
-    "husky:commitlint": "npx husky add .husky/commit-msg 'npx --no-install commitlint --edit'",
-    "husky:lint": "npx husky add .husky/pre-commit 'npx lint-staged'"
+    "husky:setup": "husky"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
