@@ -11,16 +11,26 @@ A modern, production-ready starter for building React Native TypeScript librarie
 
 ---
 
+## What's new in 2.1.0
+
+- **Interactive setup wizard** — run `npm run setup` after cloning to configure your library name, author, repo URLs, license, and keywords step by step. Validates every field, shows a preview, and writes all files in one go.
+- **Husky v9** — hooks migrated to the v9 format. Git hooks now install automatically on `npm install` with no extra step.
+
+See the full [CHANGELOG](CHANGELOG.md) for all changes including the 2.0.0 redesign.
+
+---
+
 ## Features
 
 - **react-native-builder-bob** — dual CJS + ESM + TypeScript declarations
 - **Strict TypeScript** — `noImplicitAny`, `strictNullChecks`, `noUnusedLocals`
 - **Jest + @testing-library/react-native** — full test suite with coverage thresholds
 - **ESLint + Prettier** — consistent code style, enforced on commit via `lint-staged`
-- **Husky + commitlint** — conventional commit enforcement
+- **Husky v9 + commitlint** — conventional commit enforcement, hooks install on `npm install`
 - **semantic-release** — automated versioning, changelog, and npm publish
 - **GitHub Actions** — CI pipeline (typecheck + lint + test + build) and release pipeline
 - **AI-Ready** — `AGENTS.md`, Cursor rules, and full TSDoc on every export
+- **Interactive setup wizard** — `npm run setup` to configure your library in 60 seconds
 - **Example component and hook** — reference implementations to clone from
 
 ---

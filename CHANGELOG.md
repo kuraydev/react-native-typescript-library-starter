@@ -9,9 +9,27 @@ Releases are generated automatically by [semantic-release](https://github.com/se
 
 ---
 
-## [2.0.0] - 2024
+## [2.1.0] - 2026-03-30
+
+### Added
+
+- **Interactive setup wizard** (`npm run setup`) — walks through package name, description, GitHub username/repo, author, license, and keywords one by one with live validation, shows a full preview before writing, then updates `package.json`, `README.md`, `AGENTS.md`, and `CONTRIBUTING.md` in one go
+- `prompts` added to `devDependencies` to power the wizard
+
+### Fixed
+
+- **Husky v9 migration** — removed deprecated `#!/usr/bin/env sh` + `. "$(dirname -- "$0")/_/husky.sh"` lines from both `.husky/pre-commit` and `.husky/commit-msg` (they will hard-fail in v10)
+- `pre-commit` hook now correctly delegates to `npx lint-staged` instead of running lint/prettier directly
+- `commit-msg` hook now passes `$1` to `commitlint --edit` as required
+- `prepare` script updated from `husky install` → `husky` (the v9 API)
+- `husky:setup` simplified — `husky add` was removed in v9; hooks are plain files
+
+---
+
+## [2.0.0] - 2026-03-30
 
 ### Changed (Breaking)
+
 - Migrated build system to `react-native-builder-bob` (dual CJS/ESM output)
 - Renamed source directory from `lib/` to `src/`
 - `main` now points to `lib/commonjs/index.js` (was `build/dist/index.js`)
@@ -19,6 +37,7 @@ Releases are generated automatically by [semantic-release](https://github.com/se
 - Added `exports` map for proper ESM/CJS resolution
 
 ### Added
+
 - Complete TypeScript strict-mode example component (`MyComponent`)
 - Complete typed custom hook example (`useMyHook`) with bounded counter logic
 - Full test suite with `@testing-library/react-native`
@@ -35,6 +54,7 @@ Releases are generated automatically by [semantic-release](https://github.com/se
 - `CONTRIBUTING.md`
 
 ### Fixed
+
 - GitHub Actions updated from v2 to v4
 - `lint-staged` now correctly configured (was installed but unused)
 - `cpx` dependency removed (bob handles asset copying)
