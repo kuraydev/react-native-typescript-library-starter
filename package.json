@@ -2,14 +2,16 @@
   "name": "react-native-typescript-library-starter",
   "version": "2.1.0",
   "description": "A modern, AI-ready React Native TypeScript library starter with dual CJS/ESM output, full test setup, and developer-first tooling.",
-  "main": "lib/commonjs/index.js",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/module/index.js",
-      "require": "./lib/commonjs/index.js",
-      "types": "./lib/typescript/src/index.d.ts"
+      "import": {
+        "types": "./lib/typescript/module/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/index.d.ts",
+        "default": "./lib/commonjs/index.js"
+      }
     }
   },
   "source": "src/index.ts",
@@ -54,43 +56,37 @@
     "husky:setup": "husky"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-native": ">=0.70.0"
+    "react": ">=18.0.0",
+    "react-native": ">=0.74.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@testing-library/react-native": "^13.0.0",
+    "@react-native/babel-preset": "^0.87.0",
+    "@react-native/jest-preset": "^0.87.0",
+    "@testing-library/react-native": "^14.0.1",
     "@types/jest": "^29.5.13",
-    "@react-native/babel-preset": "^0.76.0",
-    "@types/react": "^18.3.7",
-    "@typescript-eslint/eslint-plugin": "^8.6.0",
-    "@typescript-eslint/parser": "^8.6.0",
-    "babel-jest": "^29.7.0",
+    "@types/react": "~19.2.0",
+    "babel-jest": "~29.7.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "chalk": "^5.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.30.0",
-    "eslint-plugin-jest": "^28.8.3",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-promise": "^7.1.0",
-    "eslint-plugin-react": "^7.36.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-native": "^4.1.0",
-    "eslint-plugin-unused-imports": "^4.1.4",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "husky": "^9.0.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest": "~29.7.0",
     "lint-staged": "^15.2.10",
     "ora": "^8.0.1",
-    "prompts": "^2.4.2",
     "prettier": "^3.3.3",
-    "react": "18.3.1",
-    "react-native": "0.76.5",
-    "react-native-builder-bob": "^0.30.0",
-    "react-test-renderer": "18.3.1",
-    "typescript": "^5.6.0"
+    "prompts": "^2.4.2",
+    "react": "^19.2.3",
+    "react-native": "^0.87.0",
+    "react-native-builder-bob": "^0.43.0",
+    "test-renderer": "^1.2.0",
+    "typescript": "~5.9.0",
+    "typescript-eslint": "^8.67.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -102,7 +98,7 @@
     ]
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "@react-native/jest-preset",
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -134,14 +130,21 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
-      "module",
       [
-        "typescript",
+        "commonjs",
         {
-          "project": "tsconfig.build.json"
+          "esm": true
         }
-      ]
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      "typescript"
     ]
-  }
+  },
+  "main": "./lib/commonjs/index.js",
+  "module": "./lib/module/index.js"
 }

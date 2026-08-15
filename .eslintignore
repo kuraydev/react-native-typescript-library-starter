@@ -1,9 +1,0 @@
-node_modules/**
-lib/**
-coverage/**
-*.min.js
-*.bundle.js
-*.snap
-*.log
-*.lock
-*.map
