@@ -6,9 +6,7 @@ describe("MyComponent", () => {
   describe("rendering", () => {
     it("renders the title", async () => {
       const { getByTestId } = await render(<MyComponent title="Hello World" />);
-      expect(getByTestId("my-component-title").props.children).toBe(
-        "Hello World",
-      );
+      expect(getByTestId("my-component-title").props.children).toBe("Hello World");
     });
 
     it("does not render description when omitted", async () => {
@@ -20,9 +18,7 @@ describe("MyComponent", () => {
       const { getByTestId } = await render(
         <MyComponent title="Hello" description="A description" />,
       );
-      expect(getByTestId("my-component-description").props.children).toBe(
-        "A description",
-      );
+      expect(getByTestId("my-component-description").props.children).toBe("A description");
     });
 
     it("does not render button by default", async () => {
@@ -31,9 +27,7 @@ describe("MyComponent", () => {
     });
 
     it("renders button when enableButton is true", async () => {
-      const { getByTestId } = await render(
-        <MyComponent title="Hello" enableButton />,
-      );
+      const { getByTestId } = await render(<MyComponent title="Hello" enableButton />);
       expect(getByTestId("my-component-button")).toBeTruthy();
     });
 
@@ -45,9 +39,7 @@ describe("MyComponent", () => {
     });
 
     it("uses default button text when buttonText is omitted", async () => {
-      const { getByText } = await render(
-        <MyComponent title="Hello" enableButton />,
-      );
+      const { getByText } = await render(<MyComponent title="Hello" enableButton />);
       expect(getByText("Press me")).toBeTruthy();
     });
   });
@@ -59,9 +51,7 @@ describe("MyComponent", () => {
     });
 
     it("uses custom testID", async () => {
-      const { getByTestId } = await render(
-        <MyComponent title="Hello" testID="custom-id" />,
-      );
+      const { getByTestId } = await render(<MyComponent title="Hello" testID="custom-id" />);
       expect(getByTestId("custom-id")).toBeTruthy();
       expect(getByTestId("custom-id-title")).toBeTruthy();
     });
@@ -78,30 +68,22 @@ describe("MyComponent", () => {
     });
 
     it("does not throw when button pressed without onPress handler", async () => {
-      const { getByTestId } = await render(
-        <MyComponent title="Hello" enableButton />,
-      );
-      expect(() =>
-        fireEvent.press(getByTestId("my-component-button")),
-      ).not.toThrow();
+      const { getByTestId } = await render(<MyComponent title="Hello" enableButton />);
+      expect(() => fireEvent.press(getByTestId("my-component-button"))).not.toThrow();
     });
   });
 
   describe("accessibility", () => {
     it("sets accessibilityLabel to title by default", async () => {
       const { getByTestId } = await render(<MyComponent title="My Title" />);
-      expect(getByTestId("my-component").props.accessibilityLabel).toBe(
-        "My Title",
-      );
+      expect(getByTestId("my-component").props.accessibilityLabel).toBe("My Title");
     });
 
     it("uses custom accessibilityLabel when provided", async () => {
       const { getByTestId } = await render(
         <MyComponent title="My Title" accessibilityLabel="Custom Label" />,
       );
-      expect(getByTestId("my-component").props.accessibilityLabel).toBe(
-        "Custom Label",
-      );
+      expect(getByTestId("my-component").props.accessibilityLabel).toBe("Custom Label");
     });
   });
 });

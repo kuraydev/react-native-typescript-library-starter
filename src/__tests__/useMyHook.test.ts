@@ -28,18 +28,14 @@ describe("useMyHook", () => {
     });
 
     it("does not exceed max", async () => {
-      const { result } = await renderHook(() =>
-        useMyHook({ initialValue: 9, max: 10 }),
-      );
+      const { result } = await renderHook(() => useMyHook({ initialValue: 9, max: 10 }));
       await act(() => result.current.increment());
       await act(() => result.current.increment());
       expect(result.current.count).toBe(10);
     });
 
     it("sets isAtMax when count reaches max", async () => {
-      const { result } = await renderHook(() =>
-        useMyHook({ initialValue: 9, max: 10 }),
-      );
+      const { result } = await renderHook(() => useMyHook({ initialValue: 9, max: 10 }));
       await act(() => result.current.increment());
       expect(result.current.isAtMax).toBe(true);
     });

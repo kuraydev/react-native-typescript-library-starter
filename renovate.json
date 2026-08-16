@@ -1,11 +1,42 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":semanticCommits"],
-  "schedule": ["before 8am on monday"],
+  "extends": [
+    "config:recommended",
+    ":semanticCommits"
+  ],
+  "schedule": [
+    "before 8am on monday"
+  ],
   "packageRules": [
-    { "groupName": "React Native core", "matchPackageNames": ["react", "react-native", "react-native-*", "@react-native/*", "@types/react", "test-renderer"] },
-    { "groupName": "lint/format", "matchPackageNames": ["eslint*", "typescript-eslint", "prettier*", "@commitlint/*"] },
-    { "groupName": "jest", "matchPackageNames": ["jest*", "babel-jest", "@types/jest", "@testing-library/*"], "allowedVersions": "!/^30/" }
+    {
+      "groupName": "React Native core",
+      "matchPackageNames": [
+        "react",
+        "react-native",
+        "react-native-*",
+        "@react-native/*",
+        "@types/react",
+        "test-renderer"
+      ]
+    },
+    {
+      "groupName": "lint/format",
+      "matchPackageNames": [
+        "oxlint",
+        "oxfmt",
+        "@commitlint/*"
+      ]
+    },
+    {
+      "groupName": "jest",
+      "matchPackageNames": [
+        "jest*",
+        "babel-jest",
+        "@types/jest",
+        "@testing-library/*"
+      ],
+      "allowedVersions": "!/^30/"
+    }
   ],
   "rangeStrategy": "bump",
   "prConcurrentLimit": 3
