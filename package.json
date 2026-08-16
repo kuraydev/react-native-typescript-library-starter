@@ -1,6 +1,6 @@
 {
   "name": "react-native-typescript-library-starter",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A modern, AI-ready React Native TypeScript library starter with dual CJS/ESM output, full test setup, and developer-first tooling.",
   "exports": {
     ".": {
@@ -116,7 +116,11 @@
         "lines": 80,
         "statements": 80
       }
-    }
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ]
   },
   "react-native-builder-bob": {
     "source": "src",
