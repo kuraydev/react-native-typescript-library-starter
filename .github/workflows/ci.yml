@@ -50,7 +50,7 @@ jobs:
         run: npm run lint:ci
 
       - name: Run Prettier check
-        run: npm run prettier:ci
+        run: npm run format:ci
 
   test:
     name: Test

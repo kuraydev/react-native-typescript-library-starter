@@ -11,7 +11,7 @@ This file provides context for AI agents (Cursor, Claude, Copilot, etc.) working
 - Build tool: `react-native-builder-bob` (outputs CJS + ESM + TypeScript declarations)
 - Testing: Jest + `@testing-library/react-native`
 - Language: TypeScript (strict mode, no `any`)
-- Linting: ESLint v8 + Prettier
+- Linting: oxlint v8 + oxfmt
 - CI: GitHub Actions (typecheck + lint + test + build)
 
 ---
@@ -40,8 +40,8 @@ react-native-typescript-library-starter/
 │   └── typescript/               # .d.ts declarations
 ├── scripts/
 │   └── terminal/
-│       ├── lint.mjs              # Colored ESLint runner
-│       └── prettier.mjs          # Colored Prettier runner
+│       ├── lint.mjs              # Colored oxlint runner
+│       └── oxfmt.mjs          # Colored oxfmt runner
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml                # Runs on PR: typecheck + lint + test + build
@@ -55,8 +55,8 @@ react-native-typescript-library-starter/
 ├── tsconfig.json                 # Base TypeScript config
 ├── tsconfig.build.json           # bob-specific build config
 ├── babel.config.js               # metro-react-native-babel-preset (for Jest)
-├── .eslintrc.js
-├── .prettierrc
+├── .oxlintrc.json
+├── .oxfmtrc.json
 └── .commitlintrc.json
 ```
 
@@ -72,10 +72,10 @@ All commands should be run from the repository root.
 | `npm install`           | Install all dependencies (also runs `husky` via `prepare`) |
 | `npm run build`         | Build library to `lib/` via bob                            |
 | `npm run typecheck`     | Type-check without emitting files                          |
-| `npm run lint`          | Run ESLint with colored output                             |
-| `npm run lint:ci`       | Run ESLint without spinner (for CI)                        |
-| `npm run prettier`      | Format code with colored output                            |
-| `npm run prettier:ci`   | Check formatting without spinner (for CI)                  |
+| `npm run lint`          | Run oxlint with colored output                             |
+| `npm run lint:ci`       | Run oxlint without spinner (for CI)                        |
+| `npm run oxfmt`      | Format code with colored output                            |
+| `npm run oxfmt:ci`   | Check formatting without spinner (for CI)                  |
 | `npm test`              | Run Jest tests                                             |
 | `npm run test:watch`    | Run Jest in watch mode                                     |
 | `npm run test:coverage` | Run Jest with coverage report                              |
@@ -144,7 +144,7 @@ docs: update README with new API
 - Do NOT use `require()` — use ES module `import`.
 - Do NOT add `peerDependencies` as `dependencies` or `devDependencies` without justification.
 - Do NOT export internal helpers from `src/index.ts` — only public API.
-- Do NOT disable ESLint rules without an explanatory comment.
+- Do NOT disable oxlint rules without an explanatory comment.
 - Do NOT add `console.log` to source files.
 - Do NOT use default exports for hooks — named exports only.
 - Do NOT skip tests when adding new features.

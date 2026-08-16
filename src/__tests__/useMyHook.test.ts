@@ -3,81 +3,77 @@ import { useMyHook } from "../index";
 
 describe("useMyHook", () => {
   describe("initialisation", () => {
-    it("starts at 0 by default", () => {
-      const { result } = renderHook(() => useMyHook());
+    it("starts at 0 by default", async () => {
+      const { result } = await renderHook(() => useMyHook());
       expect(result.current.count).toBe(0);
     });
 
-    it("starts at the provided initialValue", () => {
-      const { result } = renderHook(() => useMyHook({ initialValue: 5 }));
+    it("starts at the provided initialValue", async () => {
+      const { result } = await renderHook(() => useMyHook({ initialValue: 5 }));
       expect(result.current.count).toBe(5);
     });
   });
 
   describe("increment", () => {
-    it("increments by 1 by default", () => {
-      const { result } = renderHook(() => useMyHook());
-      act(() => result.current.increment());
+    it("increments by 1 by default", async () => {
+      const { result } = await renderHook(() => useMyHook());
+      await act(() => result.current.increment());
       expect(result.current.count).toBe(1);
     });
 
-    it("increments by a custom step", () => {
-      const { result } = renderHook(() => useMyHook({ step: 3 }));
-      act(() => result.current.increment());
+    it("increments by a custom step", async () => {
+      const { result } = await renderHook(() => useMyHook({ step: 3 }));
+      await act(() => result.current.increment());
       expect(result.current.count).toBe(3);
     });
 
-    it("does not exceed max", () => {
-      const { result } = renderHook(() =>
-        useMyHook({ initialValue: 9, max: 10 }),
-      );
-      act(() => result.current.increment());
-      act(() => result.current.increment());
+    it("does not exceed max", async () => {
+      const { result } = await renderHook(() => useMyHook({ initialValue: 9, max: 10 }));
+      await act(() => result.current.increment());
+      await act(() => result.current.increment());
       expect(result.current.count).toBe(10);
     });
 
-    it("sets isAtMax when count reaches max", () => {
-      const { result } = renderHook(() =>
-        useMyHook({ initialValue: 9, max: 10 }),
-      );
-      act(() => result.current.increment());
+    it("sets isAtMax when count reaches max", async () => {
+      const { result } = await renderHook(() => useMyHook({ initialValue: 9, max: 10 }));
+      await act(() => result.current.increment());
       expect(result.current.isAtMax).toBe(true);
     });
   });
 
   describe("decrement", () => {
-    it("decrements by 1 by default", () => {
-      const { result } = renderHook(() => useMyHook({ initialValue: 5 }));
-      act(() => result.current.decrement());
+    it("decrements by 1 by default", async () => {
+      const { result } = await renderHook(() => useMyHook({ initialValue: 5 }));
+      await act(() => result.current.decrement());
       expect(result.current.count).toBe(4);
     });
 
-    it("does not go below min", () => {
-      const { result } = renderHook(() => useMyHook({ min: 0 }));
-      act(() => result.current.decrement());
+    it("does not go below min", async () => {
+      const { result } = await renderHook(() => useMyHook({ min: 0 }));
+      await act(() => result.current.decrement());
       expect(result.current.count).toBe(0);
     });
 
-    it("sets isAtMin when count reaches min", () => {
-      const { result } = renderHook(() => useMyHook({ min: 0 }));
+    it("sets isAtMin when count reaches min", async () => {
+      const { result } = await renderHook(() => useMyHook({ min: 0 }));
       expect(result.current.isAtMin).toBe(true);
     });
   });
 
   describe("reset", () => {
-    it("resets to the initial value", () => {
-      const { result } = renderHook(() => useMyHook({ initialValue: 5 }));
-      act(() => result.current.increment());
-      act(() => result.current.increment());
-      act(() => result.current.reset());
+    it("resets to the initial value", async () => {
+      const { result } = await renderHook(() => useMyHook({ initialValue: 5 }));
+      await act(() => result.current.increment());
+      await act(() => result.current.increment());
+      await act(() => result.current.reset());
       expect(result.current.count).toBe(5);
     });
   });
 
   describe("boundary flags", () => {
-    it("isAtMax is false when no max is set", () => {
-      const { result } = renderHook(() => useMyHook());
-      act(() => {
+    it("isAtMax is false when no max is set", async () => {
+      const { result } = await renderHook(() => useMyHook());
+      await act(() => {
         for (let i = 0; i < 100; i++) result.current.increment();
       });
       expect(result.current.isAtMax).toBe(false);

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  type AccessibilityRole,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, type AccessibilityRole } from "react-native";
 import type { MyComponentProps } from "./MyComponent.types";
 
 /**
@@ -62,10 +56,7 @@ const MyComponent: React.FC<MyComponentProps> = ({
       </Text>
 
       {description ? (
-        <Text
-          style={[styles.description, descriptionStyle]}
-          testID={`${testID}-description`}
-        >
+        <Text style={[styles.description, descriptionStyle]} testID={`${testID}-description`}>
           {description}
         </Text>
       ) : null}
