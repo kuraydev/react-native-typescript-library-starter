@@ -1,40 +1,46 @@
-# React Native TypeScript Library Starter
+# 📦 React Native TypeScript Library Starter
 
 [![CI](https://github.com/WrathChaos/react-native-typescript-library-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/WrathChaos/react-native-typescript-library-starter/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/react-native-typescript-library-starter.svg?style=flat)](https://www.npmjs.com/package/react-native-typescript-library-starter)
-[![npm downloads](https://img.shields.io/npm/dt/react-native-typescript-library-starter.svg?style=flat)](https://www.npmjs.com/package/react-native-typescript-library-starter)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg)](https://reactnative.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
+[![npm version](https://img.shields.io/npm/v/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
+[![npm downloads](https://img.shields.io/npm/dt/react-native-typescript-library-starter.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-typescript-library-starter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)](https://reactnative.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6.svg?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 A modern, production-ready starter for building React Native TypeScript libraries. Ships with dual CJS/ESM output, full test coverage, and AI-ready project conventions out of the box.
 
 ---
 
-## What's new in 2.1.0
+## 🆕 What's new in 3.0
 
-- **Interactive setup wizard** — run `npm run setup` after cloning to configure your library name, author, repo URLs, license, and keywords step by step. Validates every field, shows a preview, and writes all files in one go.
-- **Husky v9** — hooks migrated to the v9 format. Git hooks now install automatically on `npm install` with no extra step.
+- ⚡ **Modern toolchain** — React Native 0.87 / React 19 dev environment, TypeScript 5.9 with `bundler` module resolution
+- 🦀 **oxlint + oxfmt** — Rust-based linting and formatting replace ESLint + Prettier (lints the whole repo in milliseconds)
+- 📦 **builder-bob 0.43** — ESM-enabled dual CJS/ESM output with per-condition type declarations and a spec-correct `exports` map
+- 🧪 **RNTL v14** — tests migrated to the async `render`/`renderHook` API on the universal test renderer
+- 🧙 **Interactive setup wizard** — `npm run setup` configures name, author, repo URLs, license, and keywords in one pass
+- 🪝 **Husky v9** — git hooks install automatically on `npm install`
 
 See the full [CHANGELOG](CHANGELOG.md) for all changes including the 2.0.0 redesign.
 
 ---
 
-## Features
+## 🌟 Features
 
-- **react-native-builder-bob** — dual CJS + ESM + TypeScript declarations
-- **Strict TypeScript** — `noImplicitAny`, `strictNullChecks`, `noUnusedLocals`
-- **Jest + @testing-library/react-native** — full test suite with coverage thresholds
-- **oxlint + oxfmt** — consistent code style, enforced on commit via `lint-staged`
-- **Husky v9 + commitlint** — conventional commit enforcement, hooks install on `npm install`
-- **GitHub Actions** — CI pipeline (typecheck + lint + test + build)
+- 📦 **react-native-builder-bob** — dual CJS + ESM output + per-condition TypeScript declarations
+- 🔒 **Strict TypeScript** — `noImplicitAny`, `strictNullChecks`, `noUnusedLocals`
+- 🧪 **Jest + @testing-library/react-native v14** — full async test suite with coverage thresholds
+- 🦀 **oxlint + oxfmt** — Rust-fast lint + format, enforced on commit via `lint-staged`
+- 🪝 **Husky v9 + commitlint** — conventional commits, hooks install on `npm install`
+- ⚙️ **GitHub Actions** — CI pipeline (typecheck + lint + format-check + test + build)
+- 🔁 **Renovate** — grouped weekly dependency updates
+- 🤖 **AI-ready** — `AGENTS.md` conventions file for Claude Code, Cursor, Copilot & friends
 - **AI-Ready** — `AGENTS.md`, Cursor rules, and full TSDoc on every export
 - **Interactive setup wizard** — `npm run setup` to configure your library in 60 seconds
 - **Example component and hook** — reference implementations to clone from
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 1. Clone and install
 
@@ -89,7 +95,7 @@ npm test           # run the test suite
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 react-native-typescript-library-starter/
@@ -122,7 +128,7 @@ react-native-typescript-library-starter/
 
 ---
 
-## Scripts
+## 🔧 Scripts
 
 | Command                 | Description                                 |
 | ----------------------- | ------------------------------------------- |
@@ -138,7 +144,7 @@ react-native-typescript-library-starter/
 
 ---
 
-## Build Output
+## 📦 Build Output
 
 `react-native-builder-bob` produces three output targets inside `lib/`:
 
@@ -152,7 +158,7 @@ The `package.json` `exports` field routes consumers to the correct output automa
 
 ---
 
-## Example Component
+## 🧩 Example Component
 
 ```tsx
 import { MyComponent } from "your-library";
@@ -189,7 +195,7 @@ export default function App() {
 
 ---
 
-## Example Hook
+## 🪝 Example Hook
 
 ```tsx
 import { useMyHook } from "your-library";
@@ -235,7 +241,7 @@ function Counter() {
 
 ---
 
-## Testing
+## 🧪 Testing
 
 Tests use [Jest](https://jestjs.io/) and [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/).
 
@@ -251,7 +257,7 @@ Coverage thresholds are enforced in `package.json`:
 
 ---
 
-## Commit Conventions
+## 📝 Commit Conventions
 
 This project enforces [Conventional Commits](https://www.conventionalcommits.org/) via `commitlint`:
 
@@ -265,7 +271,7 @@ chore: upgrade dependencies
 
 ---
 
-## CI
+## ⚙️ CI
 
 ### CI Pipeline (`.github/workflows/ci.yml`)
 
@@ -278,7 +284,7 @@ Runs on every push and pull request to `main`:
 
 ---
 
-## AI / LLM Usage
+## 🤖 AI / LLM Usage
 
 This starter is designed to be AI-friendly:
 
@@ -298,7 +304,7 @@ Paste the contents of `AGENTS.md` into the system prompt or the start of a conve
 
 ---
 
-## Peer Dependencies
+## 🔗 Peer Dependencies
 
 ```json
 "peerDependencies": {
@@ -309,25 +315,25 @@ Paste the contents of `AGENTS.md` into the system prompt or the start of a conve
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 ---
 
-## Changelog
+## 📜 Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
-## License
+## 📄 License
 
 MIT — see [LICENSE](LICENSE).
 
 ---
 
-## Author
+## 👤 Author
 
 **FreakyCoder** — [kurayogun@gmail.com](mailto:kurayogun@gmail.com)  
 [freakycoder.com](https://www.freakycoder.com)
