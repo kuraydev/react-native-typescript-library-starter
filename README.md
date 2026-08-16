@@ -335,5 +335,5 @@ MIT — see [LICENSE](LICENSE).
 
 ## 👤 Author
 
-**FreakyCoder** — [kurayogun@gmail.com](mailto:kurayogun@gmail.com)  
+**kuraydev** — [kurayogun@gmail.com](mailto:kurayogun@gmail.com)  
 [freakycoder.com](https://www.freakycoder.com)
