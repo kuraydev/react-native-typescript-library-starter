@@ -25,7 +25,7 @@ See the full [CHANGELOG](CHANGELOG.md) for all changes including the 2.0.0 redes
 - **react-native-builder-bob** — dual CJS + ESM + TypeScript declarations
 - **Strict TypeScript** — `noImplicitAny`, `strictNullChecks`, `noUnusedLocals`
 - **Jest + @testing-library/react-native** — full test suite with coverage thresholds
-- **ESLint + Prettier** — consistent code style, enforced on commit via `lint-staged`
+- **oxlint + oxfmt** — consistent code style, enforced on commit via `lint-staged`
 - **Husky v9 + commitlint** — conventional commit enforcement, hooks install on `npm install`
 - **GitHub Actions** — CI pipeline (typecheck + lint + test + build)
 - **AI-Ready** — `AGENTS.md`, Cursor rules, and full TSDoc on every export
@@ -128,10 +128,10 @@ react-native-typescript-library-starter/
 | ----------------------- | ------------------------------------------- |
 | `npm run build`         | Build library to `lib/` via bob             |
 | `npm run typecheck`     | Type-check without emitting                 |
-| `npm run lint`          | Run ESLint with colored output and auto-fix |
-| `npm run lint:ci`       | ESLint without spinner (for CI)             |
-| `npm run prettier`      | Format source files                         |
-| `npm run prettier:ci`   | Check formatting (for CI)                   |
+| `npm run lint`          | Run oxlint with colored output and auto-fix |
+| `npm run lint:ci`       | oxlint without spinner (for CI)             |
+| `npm run oxfmt`      | Format source files                         |
+| `npm run oxfmt:ci`   | Check formatting (for CI)                   |
 | `npm test`              | Run Jest tests                              |
 | `npm run test:watch`    | Jest in watch mode                          |
 | `npm run test:coverage` | Jest with coverage report                   |
@@ -272,7 +272,7 @@ chore: upgrade dependencies
 Runs on every push and pull request to `main`:
 
 1. **Typecheck** — `tsc --noEmit`
-2. **Lint** — ESLint + Prettier check
+2. **Lint** — oxlint + oxfmt check
 3. **Test** — Jest with coverage
 4. **Build** — `bob build` (only runs after all checks pass)
 
